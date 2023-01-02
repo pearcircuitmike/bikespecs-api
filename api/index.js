@@ -12,7 +12,7 @@ app.use(express.json()); // enables json to work
 
 // Endpoint to Get a list of bikes
 app.get("/bikes", function (req, res) {
-  fs.readFile(`bikes.json`, "utf8", function (err, data) {
+  fs.readFile(`./data/bikes.json`, "utf8", function (err, data) {
     const bikes = _.map(JSON.parse(data));
     console.log(bikes);
     res.json(bikes); // you can also use res.send()
@@ -25,7 +25,7 @@ app.get("/bikes/:id", function (req, res) {
   let bikedetails;
 
   try {
-    fs.readFile(`bikes.json`, "utf8", function (err, data) {
+    fs.readFile(`./data/bikes.json`, "utf8", function (err, data) {
       bikedetails = _.chain(JSON.parse(data)).keyBy("id").at(id).value();
       console.log(bikedetails);
       res.json(bikedetails); // you can also use res.send()
