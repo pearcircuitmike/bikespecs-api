@@ -32,7 +32,7 @@ app.get("/bikes/:id", function (req, res) {
   try {
     bikedetails = _.chain(bikedata).keyBy("id").at(id).value();
     // console.log(bikedetails);
-    res.json(bikedetails); // you can also use res.send()
+    res.json(bikedetails[0]); // you can also use res.send()
   } catch (err) {
     return res.sendStatus(404);
   }
